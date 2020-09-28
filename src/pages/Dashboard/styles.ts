@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div``;
 
@@ -51,8 +52,13 @@ export const Profile = styled.div`
       color: #f4ede8;
     }
 
-    strong {
+    a {
+      text-decoration: none;
       color: #ff9000;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 `;
@@ -95,6 +101,81 @@ export const Schedule = styled.div`
 
 export const Calendar = styled.aside`
   width: 380px;
+
+  .DayPicker {
+    border-radius: 10px;
+  }
+
+  .DayPicker-wrapper {
+    padding-bottom: 0;
+    background: #3e3b47;
+    border-radius: 10px;
+  }
+
+  .DayPicker,
+  .DayPicker-Month {
+    width: 100%;
+  }
+
+  .DayPicker-NavButton {
+    color: #999591 !important;
+  }
+
+  .DayPicker-NavButton--prev {
+    right: auto;
+    left: 1.5em;
+    margin-right: 0;
+  }
+
+  .DayPicker-Month {
+    border-collapse: separate;
+    border-spacing: 8px;
+    margin: 16px 0 0 0;
+    padding: 16px;
+    background-color: #28262e;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .DayPicker-Caption {
+    margin-bottom: 1em;
+    padding: 0 1em;
+    color: #f4ede8;
+
+    > div {
+      text-align: center;
+    }
+  }
+
+  .DayPicker-Day {
+    width: 40px;
+    height: 40px;
+  }
+
+  .DayPicker-Day--available:not(.DayPicker-Day--outside) {
+    background: #3e3b47;
+    border-radius: 10px;
+    color: #fff;
+  }
+
+  .DayPicker:not(.DayPicker--interactionDisabled)
+    .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+    background: ${shade(0.2, '#3e3b47')};
+  }
+
+  .DayPicker-Day--today {
+    font-weight: normal;
+  }
+
+  .DayPicker-Day--disabled {
+    color: #666360 !important;
+    background: transparent !important;
+  }
+
+  .DayPicker-Day--selected {
+    background: #ff9000 !important;
+    border-radius: 10px;
+    color: #232129 !important;
+  }
 `;
 
 export const NextAppointment = styled.div`
@@ -146,6 +227,68 @@ export const NextAppointment = styled.div`
         color: #ff9000;
         margin-right: 8px;
       }
+    }
+  }
+`;
+
+export const Section = styled.section`
+  margin-top: 48px;
+
+  > strong {
+    color: #999591;
+    font-size: 20;
+    line-height: 26px;
+    border-bottom: 1px solid #3e3b47;
+    display: block;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  > p {
+    color: #999591;
+  }
+`;
+
+export const Appointment = styled.div`
+  display: flex;
+  align-items: center;
+
+  & + div {
+    margin-top: 16px;
+  }
+
+  span {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    color: #f4ede8;
+    max-width: 70px;
+
+    svg {
+      color: #ff9000;
+      margin-right: 8px;
+    }
+  }
+
+  div {
+    flex: 1;
+    background: #3e3b47;
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-radius: 10px;
+    margin-left: 24px;
+
+    img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+    }
+
+    strong {
+      margin-left: 24px;
+      color: #fff;
+      font-size: 20px;
     }
   }
 `;
